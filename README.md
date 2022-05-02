@@ -1,12 +1,14 @@
 # Kubernetes Cluster using Virtual Box
 
-This is a quick and basic setup for a single-master, duo worker node `Kubernetes` cluster using VirtualBox to virtualize the nodes. The setup uses vagrant to quickly pull VM images (`Ubuntu/Focal64`) and bootstraps the nodes, installing `docker`, `kubelet`, `kubectl` and `kubeadm`.
+This is a quick and basic setup for a single-master, duo worker node `Kubernetes` cluster using VirtualBox to virtualize the nodes. The setup uses vagrant to quickly pull VM images (`Ubuntu/Focal64`) and bootstraps the nodes, installing `docker`, `kubelet`, `kubectl` and `kubeadm`. This is tested for K8s `v1.23.6` and kubectl `v1.23.6`.
 
 ## Requirements
 
-- Windows (amd64) Host Machine
-- `Vagrant`: To quickly provision and bootstrap the nodes
-- `VirtualBox`: For virtualization of the nodes
+- Windows (`amd64`) Host Machine
+- `Vagrant`(>=`2.2.19`): To quickly provision and bootstrap the nodes
+- `VirtualBox`(>=`6.1.30`): For virtualization of the nodes
+- \>= 2 CPUs and >= 2 GB RAM per node (configurable in `Vagrantfile`)
+- Each node must have a seperate static IP on the `VirtualBox` host network. (configurable in `Vagrantfile`, `config.vm.network`)
 
 ## Usage
 
