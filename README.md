@@ -1,7 +1,5 @@
 # Kubernetes Cluster using Virtual Box
 
-[[__TOC__]]
-
 This is a quick and basic setup for a single-master, duo worker node `Kubernetes` cluster using VirtualBox to virtualize the nodes. The setup uses vagrant to quickly pull VM images (`Ubuntu/Focal64`) and bootstraps the nodes, installing `docker`, `kubelet`, `kubectl` and `kubeadm`.
 
 ## Requirements
