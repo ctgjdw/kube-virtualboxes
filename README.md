@@ -13,6 +13,7 @@ This is a quick and basic setup for a single-master, duo worker node `Kubernetes
 
 ## Usage
 
+1. Ensure that the `VirtualBox` UI is running.
 1. Go to `./kube-master` and run `vagrant up`
 2. Ensure that the `kube-master` node is properly setup by running `kubectl get nodes` and `kubectl get pods --all-namespaces`, all pods should show `1/1` and the master node should be `READY`.
 3. Retrieve the following command using `sudo cat /kubeadm.log` in the `kube-master`'s directory.  
