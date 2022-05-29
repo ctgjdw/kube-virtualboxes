@@ -2,7 +2,8 @@
 whoami
 HOSTNAME=$1
 KUBE_VER=$2
-printf "Installing K8=$KUBE_VER-00 on $HOSTNAME\n"
+HOST_PRIVATE_IP=$(hostname -I | cut -d ' ' -f2)
+printf "Installing K8=$KUBE_VER-00 on $HOSTNAME with IP: $HOST_PRIVATE_IP\n"
 
 if [ -f "/home/vagrant/.ssh/id_rsa.pub" ]
 then
@@ -40,6 +41,10 @@ sudo systemctl restart docker
 
 sudo apt-get install -y kubelet=$KUBE_VER-00 kubeadm=$KUBE_VER-00 kubectl=$KUBE_VER-00
 sudo apt-mark hold kubelet kubeadm kubectl
+
+echo "KUBELET_EXTRA_ARGS=--node-ip=$HOST_PRIVATE_IP" >> /etc/default/kubelet
+sudo systemctl daemon-reload
+sudo systemctl restart kubelet
 
 echo "net.bridge.bridge-nf-call-iptables=1" | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
