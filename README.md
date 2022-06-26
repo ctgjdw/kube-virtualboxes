@@ -1,6 +1,6 @@
 # Kubernetes Cluster using Virtual Box
 
-This is a quick and basic setup for a single-master, duo worker node `Kubernetes` cluster using VirtualBox to virtualize the nodes. The setup uses vagrant to quickly pull VM images (`Ubuntu/Focal64`) and bootstraps the nodes, installing `docker`, `kubelet`, `kubectl`, `kubeadm` and the `Flannel CNI`. This is tested for K8s `1.24.0` and kubectl `1.24.0`.
+This is a quick and basic setup for a single-master, duo worker node `Kubernetes` cluster using VirtualBox to virtualize the nodes. The setup uses vagrant to quickly pull VM images (`Ubuntu/Focal64`) and bootstraps the nodes, installing `docker`, `kubelet`, `kubectl`, `kubeadm` and the `Calico CNI`. This is tested for K8s `1.24.0` and kubectl `1.24.0`.
 
 ## Requirements
 
@@ -10,9 +10,7 @@ This is a quick and basic setup for a single-master, duo worker node `Kubernetes
 - `Kubernetes` (>=`1.24.0`): Tested on this version
 - \>= 2 CPUs and >= 2 GB RAM per node (configurable in `Vagrantfile`)
 - Each node must have a unique **private IP** and **hostname** on the `VirtualBox` host network. (configurable in `Vagrantfile` under the key `config.vm.network` and `config.vm.provision` respectively)
-- The K8s cluster uses the [Flannel](https://github.com/flannel-io/flannel) as a node networking solution.
-
-> Take note of [Using Vagrant with Flannel](https://github.com/flannel-io/flannel/blob/master/Documentation/troubleshooting.md#vagrant), where the CNI might not work due to vagrant's multiple network iface. This is resolved by adding an additional arg for the flannel image in `kube-master/manifests/flannel-cni.yml`.
+- The K8s cluster uses the [Calico](https://projectcalico.docs.tigera.io/getting-started/kubernetes/self-managed-onprem/onpremises#install-calico) as a node networking solution.
 
 ## Usage
 

@@ -54,7 +54,8 @@ sudo chown "$(id -u):$(id -g)" /root/.kube/config
 
 echo "net.bridge.bridge-nf-call-iptables=1" | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
-kubectl apply -f /manifests/flannel-cni.yml
+kubectl create -f /manifests/calico-operator.yml
+kubectl create -f /manifests/calico-resource.yml
 
 sudo rm -rf /root/.kube
 
